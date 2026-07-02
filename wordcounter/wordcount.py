@@ -19,6 +19,8 @@ def print_words(filename): #
         word = word.lower()
         word = word.strip(punctuations)
         for i in words:
+          i = i.lower()
+          i = i.strip(punctuations)
           if i == word:
             d[word] = d.get(word, 0) + 1
 
@@ -42,6 +44,8 @@ def print_top(filename):
         word = word.lower()
         word = word.strip(punctuations)
         for i in words:
+          i = i.lower()
+          i = i.strip(punctuations)
           if i == word:
             d[word] = d.get(word, 0) + 1
 
