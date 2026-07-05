@@ -10,28 +10,17 @@ import sys
 
 def print_words(filename): #
   d = {}
-  punctuations = r"""!()-[]{};:'"\,<>./?@#$%^&*_~"""
+  punctuations = r"""!()-[]{};:'"\,<>./?@#$%^&*_~|=*"""
   with open(filename, 'r') as f:
     for line in f:
       words = line.split()
 
       for word in words:
-        word = word.lower()
-        word = word.strip(punctuations)
-        for i in words:
-          i = i.lower()
-          i = i.strip(punctuations)
-          if i == word:
-            d[word] = d.get(word, 0) + 1
-
-
-
+        word = word.lower().strip(punctuations)
+        d[word] = d.get(word, 0) + 1
 
   for word, count in sorted(d.items()):
     print(word, count)
-
-
-
 
 def print_top(filename):
   d = {}
@@ -41,13 +30,8 @@ def print_top(filename):
       words = line.split()
 
       for word in words:
-        word = word.lower()
-        word = word.strip(punctuations)
-        for i in words:
-          i = i.lower()
-          i = i.strip(punctuations)
-          if i == word:
-            d[word] = d.get(word, 0) + 1
+        word = word.lower().strip(punctuations)
+        d[word] = d.get(word, 0) + 1
 
   for word, count in sorted(d.items(), key=lambda x: x[1], reverse=True)[:20]:
     print(word, count)
@@ -67,6 +51,4 @@ def main():
   else:
     print('unknown option: ' + option)
     sys.exit(1)
-
-if __name__ == '__main__':
-  main()
+main()
